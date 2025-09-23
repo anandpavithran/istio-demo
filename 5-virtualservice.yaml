@@ -1,0 +1,21 @@
+#Virtual service to split traffic
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: web
+  namespace: test100
+spec:
+  hosts:
+    - "test1-test100.apps.ocp4.example.com"
+  gateways:
+    - test1-gateway
+  http:
+    - route:
+        - destination:
+            host: web
+            subset: v1
+          weight: 50
+        - destination:
+            host: web
+            subset: v2
+          weight: 50

@@ -1,0 +1,13 @@
+#Common service for istio and application load balancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  namespace: test100
+spec:
+  selector:
+    app: web
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080

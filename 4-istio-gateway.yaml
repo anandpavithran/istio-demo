@@ -1,0 +1,18 @@
+#Istio Gateway (Passthrough TLS)
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: test1-gateway
+  namespace: test100
+spec:
+  #links your Gateway to the istio-ingressgateway Deployment.
+  #Even though the Gateway resource is in other NS, Istio aggregates config from all namespaces — so it works.
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 8080
+        name: http
+        protocol: HTTP
+      hosts:
+        - "test1-test100.apps.ocp4.example.com"

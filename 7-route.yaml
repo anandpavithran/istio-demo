@@ -1,0 +1,53 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: "2025-09-23T12:43:43Z"
+  managedFields:
+  - apiVersion: route.openshift.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:host: {}
+        f:port:
+          .: {}
+          f:targetPort: {}
+        f:to:
+          f:kind: {}
+          f:name: {}
+          f:weight: {}
+        f:wildcardPolicy: {}
+    manager: kubectl-expose
+    operation: Update
+    time: "2025-09-23T12:43:43Z"
+  - apiVersion: route.openshift.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:ingress: {}
+    manager: openshift-router
+    operation: Update
+    time: "2025-09-23T12:43:43Z"
+  name: web
+  namespace: test100
+  resourceVersion: "321752"
+  selfLink: /apis/route.openshift.io/v1/namespaces/test100/routes/web
+  uid: afb74e5a-6a45-4760-8b88-f634620e3f51
+spec:
+  host: test1-test100.apps.ocp4.example.com
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: web
+    weight: 100
+  wildcardPolicy: None
+status:
+  ingress:
+  - conditions:
+    - lastTransitionTime: "2025-09-23T12:43:43Z"
+      status: "True"
+      type: Admitted
+    host: test1-test100.apps.ocp4.example.com
+    routerCanonicalHostname: apps.ocp4.example.com
+    routerName: default
+    wildcardPolicy: None
