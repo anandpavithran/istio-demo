@@ -14,6 +14,8 @@ spec:
       labels:
         app: web
         version: v2
+      annotations:
+        sidecar.istio.io/inject: "true"  
     spec:
       containers:
         - name: apache2
